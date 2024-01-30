@@ -78,8 +78,20 @@ Im(1,4).image = imread('Rand1_gs.jpg');
 Im(1,5).image = imread('Rand2_gs.jpg');
 Im(1,6).image = imread('Mandrill_gs.png');
 
-Sim = CharacteristicValues(Im);
-disp(Sim);
+X = 500; Y = X;
+Sim = zeros(1,length(Im));
+Imk = zeros(X,Y);
+for k = 1:6
+    Imk = Im(1,k).image;
+    Sum = 0;
+    for i = 1:X
+        for j = 1:Y
+            Sum = Sum + abs(double(Im(1,1).image(i,j)) - double(Imk(i,j)));
+        end
+        Sim(k) = 1 - Sum/(255*X*Y);
+    end
+end
+
 
 
 
