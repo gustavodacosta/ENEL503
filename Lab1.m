@@ -66,7 +66,7 @@ subplot(2, 4, 4), imshow(Im(1,4).image, jet(20));
 subplot(2, 4, 5), imshow(Im(1,5).image);
 subplot(2, 4, 6), imshow(Im(1,6).image);
 subplot(2, 4, 7), imshow(Im(1,7).image);
-
+sgtitle('Question 2');
 
 %% Question 3
 
@@ -78,7 +78,17 @@ Im(1,4).image = imread('Rand1_gs.jpg');
 Im(1,5).image = imread('Rand2_gs.jpg');
 Im(1,6).image = imread('Mandrill_gs.png');
 
-Sim = CharacteristicValues(Im);
+CV = CharacteristicValues(Im);
+disp(CV);
+
+%% Question 4
+
+Sim = SimilarityDetermination(Im);
+disp(Sim);
+
+%% Question 5
+
+Sim = SimilarityDetermination(Im);
 disp(Sim);
 
 
