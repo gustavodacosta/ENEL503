@@ -28,8 +28,7 @@ function [Im] = CGBSCR1G2B3(image)
 %   img = 'path/to/your/image.jpg';
 %   processedImages = CGBSCR1G2B3(img);
 %
-% Author: Your Name
-% Date:   Current Date
+% Author: Gustavo Da Costa Gomez
 
 % Step 1: Read the input image
 Im = repmat({}, 7);

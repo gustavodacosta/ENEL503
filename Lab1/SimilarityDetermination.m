@@ -26,8 +26,7 @@ function [Sim] = SimilarityDetermination(Im)
 %   images = {struct('image', img1), struct('image', img2)};
 %   similarityMatrix = SimilarityDetermination(images);
 %
-% Author: Your Name
-% Date:   Current Date
+% Author: Gustavo Da Costa Gomez
 
 % Set temporary image dimensions
 X = 500;
