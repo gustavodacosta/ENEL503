@@ -69,7 +69,7 @@ subplot(2, 4, 3), imshow(Im(1,3).image); title('B');
 subplot(2, 4, 4), imshow(Im(1,4).image, jet(20)); title('SC');
 subplot(2, 4, 5), imshow(Im(1,5).image); title('R1');
 subplot(2, 4, 6), imshow(Im(1,6).image); title('G2');
-subplot(2, 4, 7), imshow(Im(1,7).image); title('');
+subplot(2, 4, 7), imshow(Im(1,7).image); title('B3');
 sgtitle('Question 2');
 
 %% Question 3
