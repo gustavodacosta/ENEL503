@@ -1,27 +1,51 @@
-% Part a: Generate 2D Barcode
+% a) Barcode Generation (20)
 
-% Step 1: Initialize a 16 x 16 matrix as the barcode
-Barcode = zeros(16, 16);
+% Initialize the 16x16 2D Barcode as zeros
+Im_Barcode = zeros(16, 16);
 
-% Step 2: Convert the given string to binary representation
+% Arbitrary string
 Str = 'Hello World! This is my barcode.';
-StrB = reshape(dec2bin(Str, 8).'- '0', 1, []);
 
-% Ensure StrB has the correct length
-StrB = StrB(1:16*8); % Truncate to the required length
+% Convert the string to binary representation
+StrB = reshape(dec2bin(Str, 8).' - '0', 1, []);
 
-% Step 3: Write StrB into the 16 x (8 + 8) segments of Barcode
-for i = 1:length(Barcode)
-    for j = 1:length(Barcode)/2
-        index = (i-1)*length(Barcode)/2 + j;
-        Barcode(i, (j-1)*8+1:j*8) = StrB(index);
+% Populate the 2D Barcode with the binary representation of the string
+for i = 1:length(Im_Barcode)
+    for j = 1:length(Im_Barcode)
+        index = ((j - 1) * 16) + i;
+        Im_Barcode(i, j) = StrB(index);
     end
 end
 
-% Display the generated Barcode
+% Display the generated 2D Barcode
 disp('Generated 2D Barcode:');
-disp(Barcode);
+disp(Im_Barcode);
 
-% Display the generated Barcode
-disp('Generated 2D Barcode:');
-disp(Barcode);
+% Plot the generated barcode
+figure;
+imshow(Im_Barcode, 'InitialMagnification', 'fit');
+title('Generated 2D Barcode');
+
+%% b) Barcode Recognition (15)
+
+% Step 4: Convert binary segments to integers (using bin2dec)
+BinarySegments = reshape(Im_Barcode, 8, []).';
+IntValues = bin2dec(char(BinarySegments + '0'));
+
+% Step 5: Convert integers to characters
+RecognizedStr = char(IntValues.');
+
+% Display the recognized barcode information
+disp('Recognized Barcode Information:');
+disp(RecognizedStr);
+
+% Plot the original and recognized barcodes
+figure;
+subplot(2, 1, 1);
+imshow(Im_Barcode, 'InitialMagnification', 'fit');
+title('Generated 2D Barcode');
+
+subplot(2, 1, 2);
+imshow(ones(1, length(RecognizedStr)), 'InitialMagnification', 'fit');
+text(0.5, 0.5, RecognizedStr, 'FontSize', 12, 'HorizontalAlignment', 'center');
+title('Recognized Barcode Information');
